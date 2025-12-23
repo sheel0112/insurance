@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bermuda UW Formula Companion</title>
+  <meta name="description" content="Mobile-first underwriting learning tool: key reinsurance equations with Bermuda examples and a decision tool."/>
+  <link rel="manifest" href="manifest.webmanifest"/>
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="theme-color" content="#0b0f1a"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">BW</div>
+      <div>
+        <div class="title">Bermuda UW Companion</div>
+        <div class="subtitle">Reinsurance formulas • examples • decision tool</div>
+      </div>
+    </div>
+    <button id="installBtn" class="btn ghost" hidden>Install</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="row gap">
+        <div class="col">
+          <label class="label">Preset (Bermuda-style)</label>
+          <select id="presetSelect" class="input"></select>
+        </div>
+        <div class="col">
+          <label class="label">Stress Mode</label>
+          <select id="stressSelect" class="input">
+            <option value="normal">Normal</option>
+            <option value="cat">Cat year (severity ↑)</option>
+            <option value="baddev">Bad development (loss ratio ↑)</option>
+          </select>
+        </div>
+        <div class="col">
+          <label class="label">Currency</label>
+          <select id="ccySelect" class="input">
+            <option value="USD">USD</option>
+            <option value="BMD">BMD</option>
+            <option value="GBP">GBP</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tabs" id="tabs"></div>
+    </section>
+
+    <section class="card" id="page"></section>
+
+    <footer class="footer">
+      <div class="muted">Tip: Add to Home Screen for an app-like experience. Works offline after first load.</div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    }
+  </script>
+</body>
+</html>
